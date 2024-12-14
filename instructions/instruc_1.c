@@ -19,7 +19,7 @@ void	sa(int tab_a1, int tab_a2)
 	tmp = tab_a1;
 	tab_a1 = tab_a2;
 	tab_a2 = tmp;
-	wirte(1, "sa\n", 3);
+	write(1, "sa\n", 3);
 }
 
 void	sb(int tab_b1, int tab_b2)
@@ -29,14 +29,14 @@ void	sb(int tab_b1, int tab_b2)
 	tmp = tab_b1;
 	tab_b1 = tab_b2;
 	tab_b2 = tmp;
-	wirte(1, "sb\n", 3);
+	write(1, "sb\n", 3);
 }
 
 void	ss(int tab_a1, int tab_a2, int tab_b1, int tab_b2)
 {
 	sa(tab_a1, tab_a2);
 	sb(tab_b1, tab_b2);
-	wirte(1, "ss\n", 3);
+	write(1, "ss\n", 3);
 }
 
 void	pa(int *tab_a, int *tab_b, int size_a, int size_b)
@@ -58,7 +58,9 @@ void	pa(int *tab_a, int *tab_b, int size_a, int size_b)
 		i++;
 	}
 	tab_a[0] = tmp;
-	wirte(1, "pa\n", 3);
+	g_size_a(size_a + 1, 0);
+	g_size_b(size_b - 1, 0);
+	write(1, "pa\n", 3);
 }
 
 void	pb(int *tab_a, int *tab_b, int size_a, int size_b)
@@ -80,5 +82,7 @@ void	pb(int *tab_a, int *tab_b, int size_a, int size_b)
 		i++;
 	}
 	tab_b[0] = tmp;
-	wirte(1, "pb\n", 3);
+	g_size_a(size_a - 1, 0);
+	g_size_b(size_b + 1, 0);
+	write(1, "pb\n", 3);
 }

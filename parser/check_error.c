@@ -86,17 +86,18 @@ int	check_double(int ac, char **av)
 
 int	main(int argc, char **argv)
 {
-	int *tab_a[500];
-	int *tab_b[500];
+	int tab_a[500];
+	int tab_b[500];
 	int size_a;
 	int size_b;
 
-	size_a = argc;
-	size_b = 0;
+	size_a = g_size_a(argc - 1, 0);
+	size_b = g_size_b(0, 0);
 	if (check_double(argc, argv) == 0)
 		return (write(1, "Error\n", 6), 0);
-	write(1, "biennnn\n", 8);
-	init_tab(tab_a, tab_b, size_a);
+	write(1, "C'est Bieng !\n", 8);
+	init_tab(tab_a, tab_b, size_a, argv);
+	push_swap(tab_a, tab_b, size_a, size_b);
 	return (0);
 }
 //el famoso push swap

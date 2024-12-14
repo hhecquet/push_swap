@@ -25,7 +25,7 @@ void	ra(int *tab_a, int size_a)
 		i++;
 	}
 	tab_a[size_a] = tmp;
-	wirte(1, "ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
 void	rb(int *tab_b, int size_b)
@@ -41,14 +41,14 @@ void	rb(int *tab_b, int size_b)
 		i++;
 	}
 	tab_b[size_b] = tmp;
-	wirte(1, "rb\n", 3);
+	write(1, "rb\n", 3);
 }
 
 void	rr(int *tab_a, int *tab_b, int size_a, int size_b)
 {
 	ra(tab_a, size_a);
 	rb(tab_b, size_b);
-	wirte(1, "rr\n", 3);
+	write(1, "rr\n", 3);
 }
 
 void	rra(int *tab_a, int size_a)
@@ -64,7 +64,7 @@ void	rra(int *tab_a, int size_a)
 		i--;
 	}
 	tab_a[0] = tmp;
-	wirte(1, "rra\n", 4);
+	write(1, "rra\n", 4);
 }
 
 void	rrb(int *tab_b, int size_b)
@@ -80,4 +80,5 @@ void	rrb(int *tab_b, int size_b)
 		i--;
 	}
 	tab_b[0] = tmp;
+	write(1, "rrb\n", 4);
 }
