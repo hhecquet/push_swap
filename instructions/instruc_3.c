@@ -16,8 +16,8 @@ void	rrr(int *tab_a, int *tab_b, int size_a, int size_b)
 {
 	rra(tab_a, size_a);
 	rrb(tab_b, size_b);
+	write(1, "rrr\n", 4);
 }
-write(1, "rrr\n", 4);
 
 int	g_size_a(int i, int read_only)
 {
@@ -35,6 +35,14 @@ int	g_size_b(int i, int read_only)
 		return(size_b);
 	size_b = i;
 	return (size_b);
+}
+int	g_tmp(int i, int read_only)
+{
+	static int	tmp = 2147483647;
+	if (read_only == 1)
+		return(tmp);
+	tmp = i;
+	return (tmp);
 }
 
 int	ft_atoi(const char *nptr)

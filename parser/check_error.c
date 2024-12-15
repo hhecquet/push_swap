@@ -86,17 +86,28 @@ int	check_double(int ac, char **av)
 
 int	main(int argc, char **argv)
 {
-	int tab_a[500];
-	int tab_b[500];
+	int *tab_a;
+	int *tab_b;
 	int size_a;
 	int size_b;
+	int i;
 
+	i = 0;
 	size_a = g_size_a(argc - 1, 0);
 	size_b = g_size_b(0, 0);
 	if (check_double(argc, argv) == 0)
 		return (write(1, "Error\n", 6), 0);
-	write(1, "C'est Bieng !\n", 8);
-	init_tab(tab_a, tab_b, size_a, argv);
+	write(1, "C'est Bieng !\n", 14);
+	tab_a = malloc(sizeof(int *) * size_a);
+	tab_b = malloc(sizeof(int *) * size_a);
+	if (!tab_a || !tab_b)
+		return (free(tab_a), free(tab_b), 0);
+	while (i < size_a)
+	{
+		tab_a[i] = ft_atoi(argv[i + 1]);
+		tab_b[i] = 0;
+		i++;
+	}
 	push_swap(tab_a, tab_b, size_a, size_b);
 	return (0);
 }
