@@ -46,18 +46,19 @@ void	pa(int *tab_a, int *tab_b, int size_a, int size_b)
 
 	tmp = tab_b[0];
 	i = 0;
-	while (i < size_b)
+	while (i < size_b - 1)
 	{
 		tab_b[i] = tab_b[i + 1];
 		i++;
 	}
-	i = 0;
-	while (i < size_a - 1)
+	i = size_a - 1;
+	while (i >= 0)
 	{
 		tab_a[i + 1] = tab_a[i];
-		i++;
+		i--;
 	}
 	tab_a[0] = tmp;
+	g_tmp(tab_b[0],0);
 	g_size_a(g_size_a(0,1) + 1, 0);
 	g_size_b(g_size_b(0,1) - 1, 0);
 	write(1, "pa\n", 3);
@@ -75,13 +76,14 @@ void	pb(int *tab_a, int *tab_b, int size_a, int size_b)
 		tab_a[i] = tab_a[i + 1];
 		i++;
 	}
-	i = 0;
-	while (i <= size_b)
+	i = size_b - 1;
+	while (i >= 0)
 	{
 		tab_b[i + 1] = tab_b[i];
-		i++;
+		i--;
 	}
 	tab_b[0] = tmp;
+	g_tmp(tab_b[0],0);
 	g_size_a(g_size_a(0,1) - 1, 0);
 	g_size_b(g_size_b(0,1) + 1, 0);
 	write(1, "pb\n", 3);

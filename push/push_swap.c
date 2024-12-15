@@ -10,87 +10,113 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"\
+#include "../push_swap.h"
 
-int ft_strcmp_plus(int tab0, int tab1, int tablst)
+int	take_min(int tab0, int tab1, int tablst)
+{
+	if (tab0 < tab1 && tab0 < tablst)
+		return (0);
+	if (tab1 < tab0 && tab1 < tablst)
+		return (1);
+	return (2);
+}
+
+int ft_strcmp_plus(int *tab_a, int *tab_b)
 {
 	int tmp = g_tmp(0,1);
-	if( tmp < tab0 && tmp < tab1 && tmp < tablst)
+	if( tmp < tab_a[0] && tmp < tab_a[1] && tmp < tab_a[g_size_a(0,1) - 1])
 		return (-1);
-	if ((tab0 > tab1 && tab0 > tablst && tab0 <= tmp) || (tab0 <= tmp &&
-		tab1 > tmp && tab0 < tab1 && tablst <= tmp && tab0 > tablst) ||
-			(tab0 <= tmp && tablst > tmp && tab0 < tablst && tab1 <= tmp &&
-				tab0 > tab1) ||  (tab0 <= tmp && tab1 > tmp && tablst > tmp &&
-					tab0 < tab1 && tab0 < tablst))
-		return (g_tmp(tab0,0), 0);
-	else if ((tab1 > tab0 && tab1 > tablst && tab1 <= tmp) || (tab1 <= tmp &&
-		tab0 > tmp && tab1 < tab0 && tablst <= tmp && tab1 > tablst) ||
-			(tab1 <= tmp && tablst > tmp && tab1 < tablst && tab0 <= tmp &&
-				tab1 > tab0) ||  (tab1 <= tmp && tab0 > tmp && tablst > tmp &&
-					tab1 < tab0 && tab1 < tablst))
-		return (g_tmp(tab1,0), 1);
-	else if ((tablst > tab1 && tablst > tab0 && tab0 <= tmp) || (tablst <= tmp &&
-		tab1 > tmp && tablst < tab1 && tab0 <= tmp && tablst > tab0) ||
-			(tablst <= tmp && tab0 > tmp && tablst < tab0 && tab1 <= tmp &&
-				tablst > tab1) || (tablst <= tmp && tab1 > tmp && tab0 > tmp &&
-					tablst < tab1 && tablst < tab0))
-		return (g_tmp(tablst,0), 2);
+	if (tab_a[0] < tab_b[g_size_b(0,1) - 1] || tab_a[1] < tab_b[g_size_b(0,1) - 1] ||
+		tab_a[g_size_a(0,1) - 1] < tab_b[g_size_b(0,1) - 1] || g_size_b(0,1) == 0)
+		return (g_tmp(tab_a[take_min(tab_a[0], tab_a[1], tab_a[g_size_a(0,1) - 1])],0), take_min(tab_a[0], tab_a[1], tab_a[g_size_a(0,1) - 1]));
+	else if ((tab_a[0] > tab_a[1] && tab_a[0] > tab_a[g_size_a(0,1) - 1] && tab_a[0] <= tmp) || (tab_a[0] <= tmp &&
+		tab_a[1] > tmp && tab_a[0] < tab_a[1] && tab_a[g_size_a(0,1) - 1] <= tmp && tab_a[0] > tab_a[g_size_a(0,1) - 1]) ||
+			(tab_a[0] <= tmp && tab_a[g_size_a(0,1) - 1] > tmp && tab_a[0] < tab_a[g_size_a(0,1) - 1] && tab_a[1] <= tmp &&
+				tab_a[0] > tab_a[1]) ||  (tab_a[0] <= tmp && tab_a[1] > tmp && tab_a[g_size_a(0,1) - 1] > tmp &&
+					tab_a[0] < tab_a[1] && tab_a[0] < tab_a[g_size_a(0,1) - 1]))
+		return (g_tmp(tab_a[0],0), 0);
+	else if ((tab_a[1] > tab_a[0] && tab_a[1] > tab_a[g_size_a(0,1) - 1] && tab_a[1] <= tmp) || (tab_a[1] <= tmp &&
+		tab_a[0] > tmp && tab_a[1] < tab_a[0] && tab_a[g_size_a(0,1) - 1] <= tmp && tab_a[1] > tab_a[g_size_a(0,1) - 1]) ||
+			(tab_a[1] <= tmp && tab_a[g_size_a(0,1) - 1] > tmp && tab_a[1] < tab_a[g_size_a(0,1) - 1] && tab_a[0] <= tmp &&
+				tab_a[1] > tab_a[0]) ||  (tab_a[1] <= tmp && tab_a[0] > tmp && tab_a[g_size_a(0,1) - 1] > tmp &&
+					tab_a[1] < tab_a[0] && tab_a[1] < tab_a[g_size_a(0,1) - 1]))
+		return (g_tmp(tab_a[1],0), 1);
+	else if ((tab_a[g_size_a(0,1) - 1] > tab_a[1] && tab_a[g_size_a(0,1) - 1] > tab_a[0] && tab_a[g_size_a(0,1) - 1] <= tmp) || (tab_a[g_size_a(0,1) - 1] <= tmp &&
+		tab_a[1] > tmp && tab_a[g_size_a(0,1) - 1] < tab_a[1] && tab_a[0] <= tmp && tab_a[g_size_a(0,1) - 1] > tab_a[0]) ||
+			(tab_a[g_size_a(0,1) - 1] <= tmp && tab_a[0] > tmp && tab_a[g_size_a(0,1) - 1] < tab_a[0] && tab_a[1] <= tmp &&
+				tab_a[g_size_a(0,1) - 1] > tab_a[1]) || (tab_a[g_size_a(0,1) - 1] <= tmp && tab_a[1] > tmp && tab_a[0] > tmp &&
+					tab_a[g_size_a(0,1) - 1] < tab_a[1] && tab_a[g_size_a(0,1) - 1] < tab_a[0]))
+		return (g_tmp(tab_a[g_size_a(0,1) - 1],0), 2);
 	return (-1);
+}
+
+int	check_order(int *tab_a)
+{
+	int i;
+
+	i = 0;
+	while (i < g_size_a(0,1) - 1)
+	{
+		if (tab_a[i] > tab_a[i + 1] || g_size_b(0,1) != 0)
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	push_swap(int *tab_a, int *tab_b, int size_a, int size_b)
 {
 	int cmp;
+	int var;
 
 	cmp = 0;
-	while (g_size_a(0,1) != 0)
+	var = 0;
+	(void)size_b;
+	(void)size_a;
+	while (check_order(tab_a) != 1)
 	{
-		size_a = g_size_a(0,1);
-		size_b = g_size_b(0,1);
-		if (g_size_b(0,1) != 0 && tab_b[0] < tab_a[size_a - 1] && tab_b[0] < tab_a[0] && tab_b[0] < tab_a[1]) // rajouter des if
+		if (g_size_b(0,1) != 0 && ft_strcmp_plus(tab_a, tab_b) == -1 && var == 1)
 		{
-			while (tab_b[0] < tab_a[g_size_a(0,1) - 1])
-				pa(tab_a, tab_b, size_a, size_b);
+			var = 0;
+			while (!(tab_a[g_size_a(0,1) - 1] > tab_b[0] && tab_a[g_size_a(0,1) - 1] < tab_a[0]) && g_size_b(0,1) != 0)
+				pa(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+			if (tab_a[g_size_a(0,1) - 1] < tab_b[0])
+				rra(tab_a, g_size_a(0,1));
 			if (g_size_b(0,1) == 0)
 				g_tmp(2147483647,0);
 		}
-		if (g_size_a(0,1) > 2)
-			cmp = ft_strcmp_plus(tab_a[0], tab_a[1], tab_a[size_a - 1]);
-		else if (size_a == 2)
-			if ((tab_a[0] > tab_a[1] && tab_a[0] < g_tmp(0,1) && tab_a[1] < g_tmp(0,1)) || (tab_a[0] < tab_a[1] && tab_a[0] < g_tmp(0,1) && tab_a[1] > g_tmp(0,1)))
-				cmp = 0;
-			else if ((tab_a[1] > tab_a[0] && tab_a[0] < g_tmp(0,1) && tab_a[1] < g_tmp(0,1)) || (tab_a[1] < tab_a[0] && tab_a[1] < g_tmp(0,1) && tab_a[0] > g_tmp(0,1)))
-				cmp = 1;
-			else 
-				cmp = -1;
-		else if (size_a == 1)
-			if (tab_a[0] <= g_tmp(0,1))
-				cmp = 0;
-			else
-				cmp = -1;
-		else if (size_a == 0)
-			return(1);
+		if (check_order(tab_a) == 1)
+			return (1);
+		if (g_size_b(0,1) == 0)
+			cmp = ft_strcmp_plus(tab_a, tab_b);
+		else if (g_size_a(0,1) > 2)
+			cmp = ft_strcmp_plus(tab_a, tab_b);
+		else if (g_size_a(0,1) == 2)
+			cmp = -1;
 		if (cmp == 0)
-			pb(tab_a, tab_b, size_a, size_b);
+			pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
 		else if (cmp == 1)
 		{
 			sa(tab_a);
-			pb(tab_a, tab_b, size_a, size_b);
+			pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
 		}
 		else if (cmp == 2)
 		{
-			rra(tab_a, size_a);
-			pb(tab_a, tab_b, size_a, size_b);
+			rra(tab_a, g_size_a(0,1));
+			pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
 		}
 		else if (cmp == -1)
 		{
-			if (tab_a[0] > tab_a[size_a - 1] && tab_a[0] > tab_a[1])
-				ra(tab_a, size_a);
-			else if (tab_a[1] > tab_a[size_a - 1] && tab_a[1] > tab_a[0])
+			if (g_size_a(0,1) == 2 && tab_a[0] > tab_a[1])
+				sa(tab_a);
+			else if (tab_a[0] < tab_a[g_size_a(0,1) - 1] && tab_a[0] < tab_a[1] && g_size_a(0,1) > 2)
+				ra(tab_a, g_size_a(0,1));
+			else if (tab_a[1] < tab_a[g_size_a(0,1) - 1] && tab_a[1] < tab_a[0] && g_size_a(0,1) > 2)
 			{
 				sa(tab_a);
-				ra(tab_a, size_a);
+				ra(tab_a, g_size_a(0,1));
 			}
+			var = 1;
 		}
 	}
 	return (1);

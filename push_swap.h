@@ -34,7 +34,8 @@ void	rrr(int *tab_a, int *tab_b, int size_a, int size_b);
 int		g_size_a(int i, int read_only);
 int		g_size_b(int i, int read_only);
 int		ft_atoi(const char *nptr);
-int		ft_strcmp_plus(int tab0, int tab1, int tablst);
+int		take_min(int tab0, int tab1, int tablst);
+int		ft_strcmp_plus(int *tab_a, int *tab_b);
 int		g_tmp(int i, int read_only);
 int		push_swap(int *tab_a, int *tab_b, int size_a, int size_b);
 
