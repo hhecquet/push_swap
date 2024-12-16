@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instruc_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:45:15 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/14 14:45:15 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/16 13:45:57 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	ra(int *tab_a, int size_a)
 
 	i = 0;
 	tmp = tab_a[0];
-	while (i < size_a)
+	while (i < size_a - 1)
 	{
 		tab_a[i] = tab_a[i + 1];
 		i++;
 	}
-	tab_a[size_a] = tmp;
+	tab_a[size_a - 1] = tmp;
 	write(1, "ra\n", 3);
 }
 
@@ -35,12 +35,12 @@ void	rb(int *tab_b, int size_b)
 
 	i = 0;
 	tmp = tab_b[0];
-	while (i <= size_b)
+	while (i < size_b - 1)
 	{
 		tab_b[i] = tab_b[i + 1];
 		i++;
 	}
-	tab_b[size_b] = tmp;
+	tab_b[size_b - 1] = tmp;
 	write(1, "rb\n", 3);
 }
 
@@ -56,11 +56,11 @@ void	rra(int *tab_a, int size_a)
 	int	i;
 	int	tmp;
 
-	i = size_a;
+	i = size_a - 2;
 	tmp = tab_a[size_a - 1];
-	while (i > 0)
+	while (i >= 0)
 	{
-		tab_a[i] = tab_a[i - 1];
+		tab_a[i + 1] = tab_a[i];
 		i--;
 	}
 	tab_a[0] = tmp;
@@ -72,11 +72,11 @@ void	rrb(int *tab_b, int size_b)
 	int	i;
 	int	tmp;
 
-	i = size_b;
+	i = size_b - 2;
 	tmp = tab_b[size_b - 1];
-	while (i > 0)
+	while (i >= 0)
 	{
-		tab_b[i] = tab_b[i - 1];
+		tab_b[i + 1] = tab_b[i];
 		i--;
 	}
 	tab_b[0] = tmp;
