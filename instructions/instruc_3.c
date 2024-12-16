@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instruc_3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:45:54 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/14 14:45:54 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/16 09:46:25 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ int	g_tmp(int i, int read_only)
 		return(tmp);
 	tmp = i;
 	return (tmp);
+}
+int	g_sign(int i, int read_only)
+{
+	static int	sign = 0;
+	if (read_only == 1)
+		return(sign);
+	sign = i;
+	return (sign);
 }
 
 int	ft_atoi(const char *nptr)

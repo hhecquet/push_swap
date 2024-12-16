@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:35:51 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/14 14:35:51 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/16 11:13:54 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ void	rrb(int *tab_b, int size_b);
 void	rrr(int *tab_a, int *tab_b, int size_a, int size_b);
 int		g_size_a(int i, int read_only);
 int		g_size_b(int i, int read_only);
+int		g_sign(int i, int read_only);
+int		check_orderb(int *tab_a, int *tab_b);
 int		ft_atoi(const char *nptr);
-int		take_min(int tab0, int tab1, int tablst);
+int		take_min(int tab0, int tab1, int tablst, int *tab_b);
 int		ft_strcmp_plus(int *tab_a, int *tab_b);
 int		g_tmp(int i, int read_only);
 int		push_swap(int *tab_a, int *tab_b, int size_a, int size_b);

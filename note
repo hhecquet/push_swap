@@ -3,3 +3,26 @@ pas de param, pas un int, pas de doublons
 size a et size b change avec pa et pb
 
 count des actions
+
+if ((tab0 > tab_b[0] || tab0 < tab_b[g_size_b(0,1) - 1]) && ((tab0 < tab1 && tab0 < tablst)||
+	(tab0 < tab1 && tab0 > tablst && tablst < tab_b[0])||(tab0 < tablst && tab0 > tab1 && tab1 < tab_b[0])
+		||(tab0 > tab1 && tab0 > tablst && tab1 < tab_b[0] && tablst < tab_b[0])))
+		return (0);
+if ((tab1 > tab_b[0] || tab1 < tab_b[g_size_b(0,1) - 1]) && ((tab1 < tab0 && tab1 < tablst)||
+	(tab1 < tab0 && tab1 > tablst && tablst < tab_b[0])||(tab1 < tablst && tab1 > tab0 && tab0 < tab_b[0])
+		||(tab1 > tab0 && tab1 > tablst && tab0 < tab_b[0] && tablst < tab_b[0])))
+		return (1);
+if ((tablst > tab_b[0] || tablst < tab_b[g_size_b(0,1) - 1]) && ((tablst < tab1 && tablst < tab0)||
+	(tablst < tab1 && tablst > tab0 && tab0 < tab_b[0])||(tablst < tab0 && tablst > tab1 && tab1 < tab_b[0])
+		||(tablst > tab1 && tablst > tab0 && tab1 < tab_b[0] && tab0 < tab_b[0])))
+		return (g_size_a(0,1) - 1);
+	return (-1);
+
+
+	if (tab0 < tab1 && tab0 < tablst && (tab0 > tab_b[0] || tab0 < tab_b[g_size_b(0,1) - 1]))
+		return (0);
+	if (tab1 < tab0 && tab1 < tablst && (tab1 > tab_b[0] || tab1 < tab_b[g_size_b(0,1) - 1]))
+		return (1);
+	if (tablst < tab0 && tablst < tab1 && (tablst > tab_b[0] || tablst < tab_b[g_size_b(0,1) - 1]))
+		return (g_size_a(0,1) - 1);
+	return (-1);
