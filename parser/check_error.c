@@ -97,7 +97,7 @@ int	main(int argc, char **argv)
 	size_b = g_size_b(0, 0);
 	if (check_double(argc, argv) == 0)
 		return (write(1, "Error\n", 6), 0);
-	write(1, "C'est Bieng !\n", 14);
+	//write(1, "C'est Bieng !\n", 14);
 	tab_a = malloc(sizeof(int *) * size_a);
 	tab_b = malloc(sizeof(int *) * size_a);
 	if (!tab_a || !tab_b)
