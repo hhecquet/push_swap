@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:35:51 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/18 11:01:53 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/18 15:17:23 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ int		ft_strcmp_plus(int *tab_a, int *tab_b);
 int		check_order(int *tab, int size);
 int		check_order_plus(int *tab_a, int *tab_b);
 int		push_swap(int *tab_a, int *tab_b);
+//sort_tab.c
+void	ft_sort_int_tab(int *tab_sort, int size);
 
 #endif

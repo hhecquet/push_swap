@@ -6,7 +6,7 @@
 #    By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/14 14:36:03 by marvin            #+#    #+#              #
-#    Updated: 2024/12/18 10:49:33 by hhecquet         ###   ########.fr        #
+#    Updated: 2024/12/18 13:16:28 by hhecquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 SRCS =	parser/check_error.c			\
 		parser/ft_split.c				\
 		push/push_swap.c 				\
+		push/sort_tab.c					\
 		instructions/instruc_1.c		\
 		instructions/instruc_2.c		\
 		instructions/instruc_3.c		
