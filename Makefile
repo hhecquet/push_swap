@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/14 14:36:03 by marvin            #+#    #+#              #
-#    Updated: 2024/12/14 14:36:03 by marvin           ###   ########.fr        #
+#    Updated: 2024/12/18 10:49:33 by hhecquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,12 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRCS =	parser/check_error.c	\
-		push/push_swap.c 	\
+SRCS =	parser/check_error.c			\
+		parser/ft_split.c				\
+		push/push_swap.c 				\
 		instructions/instruc_1.c		\
 		instructions/instruc_2.c		\
-		instructions/instruc_3.c	
+		instructions/instruc_3.c		
 
 OBJ = $(SRCS:.c=.o)
 

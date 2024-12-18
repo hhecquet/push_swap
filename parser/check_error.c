@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:04:50 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/14 11:04:50 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/18 11:29:19 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,31 +84,47 @@ int	check_double(int ac, char **av)
 	return (1);
 }
 
-int	main(int argc, char **argv)
+void	init_tab(int *tab_a, int *tab_b, char **av)
 {
-	int *tab_a;
-	int *tab_b;
-	int size_a;
-	int size_b;
-	int i;
+	int	i;
 
 	i = 0;
-	size_a = g_size_a(argc - 1, 0);
-	size_b = g_size_b(0, 0);
-	if (check_double(argc, argv) == 0)
-		return (write(1, "Error\n", 6), 0);
-	//write(1, "C'est Bieng !\n", 14);
-	tab_a = malloc(sizeof(int *) * size_a);
-	tab_b = malloc(sizeof(int *) * size_a);
-	if (!tab_a || !tab_b)
-		return (free(tab_a), free(tab_b), 0);
-	while (i < size_a)
+	while (i < g_size_a(0,1))
 	{
-		tab_a[i] = ft_atoi(argv[i + 1]);
+		tab_a[i] = ft_atoi(av[i + 1]);
 		tab_b[i] = 0;
 		i++;
 	}
-	push_swap(tab_a, tab_b, size_a, size_b);
+}
+
+int g_ac(int i, int read_only)
+{
+	static int ac;
+
+	if (read_only == 0)
+		ac = i;
+	return (ac);
+}
+
+int	main(int argc, char **argv)
+{
+	int 	*tab_a;
+	int 	*tab_b;
+	int 	i;
+
+	i = 0;
+	g_ac(argc, 0);
+	if (argc == 2)
+		argv = ft_split(argv[1], ' ');
+	g_size_a(g_ac(0,1) - 1, 0);
+	g_size_b(0, 0);
+	if (check_double(g_ac(0,1), argv) == 0)
+		return (write(1, "Error\n", 6), 0);
+	tab_a = malloc(sizeof(int *) * g_size_a(0,1));
+	tab_b = malloc(sizeof(int *) * g_size_a(0,1));
+	if (!tab_a || !tab_b)
+		return (free(tab_a), free(tab_b), 0);
+	init_tab(tab_a, tab_b, argv);
+	push_swap(tab_a, tab_b);
 	return (0);
 }
-//el famoso push swap

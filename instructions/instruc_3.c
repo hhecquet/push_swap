@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:45:54 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/16 09:46:25 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/18 09:44:17 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,24 @@ int	g_sign(int i, int read_only)
 		return(sign);
 	sign = i;
 	return (sign);
+}
+
+int	g_min(int i, int read_only)
+{
+	static int	min = 0;
+	if (read_only == 1)
+		return(min);
+	min = i;
+	return (min);
+}
+
+int	g_max(int i, int read_only)
+{
+	static int	max = 0;
+	if (read_only == 1)
+		return(max);
+	max = i;
+	return (max);
 }
 
 int	ft_atoi(const char *nptr)

@@ -6,11 +6,43 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:35:21 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/16 14:47:41 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:45:57 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+int	chr_min(int *tab, int size)
+{
+	int	i;
+	int min;
+	
+	i = 1;
+	min = 0;
+	while (i <= size - 1)
+	{
+		if (tab[min] > tab[i])
+			min = i;
+		i++;
+	}
+	return (min);
+}
+
+int	chr_max(int *tab, int size)
+{
+	int	i;
+	int max;
+	
+	i = 1;
+	max = 0;
+	while (i <= size - 1)
+	{
+		if (tab[max] < tab[i])
+			max = i;
+		i++;
+	}
+	return (max);
+}
 
 int	*take_min(int *tab_a)
 {
@@ -66,21 +98,21 @@ int ft_strcmp_plus(int *tab_a, int *tab_b)
 	return (-1);
 }
 
-int	check_order(int *tab_a)
+int	check_order(int *tab, int size)
 {
 	int i;
 
 	i = 0;
-	while (i < g_size_a(0,1) - 1)
+	while (i < size - 1)
 	{
-		if (tab_a[i] > tab_a[i + 1] || g_size_b(0,1) != 0)
+		if (tab[i] > tab[i + 1])
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	check_orderb(int *tab_a, int *tab_b)
+int	check_order_plus(int *tab_a, int *tab_b)
 {
 	int i;
 
@@ -91,79 +123,118 @@ int	check_orderb(int *tab_a, int *tab_b)
 			return (0);
 		i++;
 	}
-	if (tab_a[1] > tab_a[0])
+	i = chr_max(tab_a, g_size_a(0,1));
+	while (i > 0)
 	{
-		if (tab_b[0] > tab_a[1])
+		if (tab_a[i] < tab_a[i - 1])
 			return (0);
-		sa(tab_a);
+		i--;
 	}
-	else if (tab_a[0] > tab_a[1])
+	i = g_size_a(0,1) - 1;
+	while (i > chr_max(tab_a, g_size_a(0,1)))
 	{
-		if (tab_b[0] > tab_a[0] )
+		if (tab_a[i] < tab_a[i - 1])
 			return (0);
+		i--;
 	}
 	return (1);
 }
 
-int	push_swap(int *tab_a, int *tab_b, int size_a, int size_b)
+int	push_swap(int *tab_a, int *tab_b)
 {
 	int cmp;
 	int var;
+	int min;
+	int max;
 
 	cmp = 0;
 	var = 0;
-	(void)size_b;
-	(void)size_a;
-	while (check_order(tab_a) != 1)
+	min = 0;
+	max = 0;
+	if (g_size_b(0,1) == 0 && g_size_a(0,1) != 0 && check_order(tab_a, g_size_a(0,1)) == 1)
+		return (1);
+	if (g_size_a(0,1) == 2 && tab_a[0] > tab_a[1])
 	{
-		if (g_size_b(0,1) != 0 && var == 1)
+		sa(tab_a);
+		return (1);
+	}
+	/* if (g_size_a(0,1) == 3)
+	{
+		int tmp;
+		
+		tmp = 0;
+		while (!(tab_a[0] < tab_a[1] && tab_a[1] < tab_a[2]))
 		{
-			var = 0;
-			while (!(tab_a[g_size_a(0,1) - 1] > tab_b[0] && tab_a[g_size_a(0,1) - 1] < tab_a[0]) && g_size_b(0,1) != 0)
-				pa(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
-			//if (tab_a[g_size_a(0,1) - 1] < tab_a[0])
-			//	rra(tab_a, g_size_a(0,1));
-			if (g_size_b(0,1) == 0)
-				g_tmp(2147483647,0);
-		}
-		if (check_order(tab_a) == 1)
+		tmp = tab_a[1];
+		tab_a[1] = tab_a[2];
+		tab_a[2] = tmp;
+		if (tab_a[0] < tab_a[1] && tab_a[1] < tab_a[2])
 			return (1);
-		if (g_size_a(0,1) > 2 || g_size_b(0,1) == 0)
-			cmp = ft_strcmp_plus(tab_a, tab_b);
-		else if (g_size_a(0,1) == 2)
-			cmp = -1;
-		if (cmp == 0)
-		{
-			pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+		tmp = tab_a[0];
+		tab_a[0] = tab_a[2];
+		tab_a[2] = tmp;
 		}
-		else if (cmp == 1)
+		return (1);
+	} */
+	pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+	pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+	if (tab_b[0] < tab_b[1])
+		sb(tab_b);
+	min = chr_min(tab_b, g_size_b(0,1));
+	max = chr_max(tab_b, g_size_b(0,1));
+	while (check_order_plus(tab_a,tab_b) != 1)
+	{
+		var = tab_a[0];
+		if (tab_a[0] < tab_b[(g_size_b(0,1) - 1)/2 + 1])//// a revoir
 		{
-			sa(tab_a);
-			pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
-		}
-		else if (cmp == 2)
-		{
-			rra(tab_a, g_size_a(0,1));
-			pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
-		}
-		if (g_size_a(0,1) == 2 && check_orderb(tab_a,tab_b) == 1)
-				var = 1;
-		if (g_sign(0,1) == 1)
-			rb(tab_b, g_size_b(0,1));
-		else if (cmp == -1)
-		{
-			if (g_size_a(0,1) == 2 && tab_a[0] > tab_a[1])
-				sa(tab_a);
-			else if (tab_a[0] < tab_a[g_size_a(0,1) - 1] && tab_a[0] < tab_a[1] && g_size_a(0,1) > 2)
-				ra(tab_a, g_size_a(0,1));
-			else if (tab_a[1] < tab_a[g_size_a(0,1) - 1] && tab_a[1] < tab_a[0] && g_size_a(0,1) > 2)
+			while (tab_b[0] != var)
 			{
-				sa(tab_a);
-				ra(tab_a, g_size_a(0,1));
+				if (tab_a[0] < tab_b[0] && tab_a[0] > tab_b[g_size_b(0,1) - 1])
+					pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+				else
+					rrb(tab_b, g_size_b(0,1));
 			}
-			var = 1;
 		}
-		g_sign(0,0);
+		else
+		{
+			while (tab_b[0] != var)
+			{
+				if (tab_a[0] < tab_b[0] && tab_a[0] > tab_b[g_size_b(0,1) - 1])
+					pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+				else
+					rb(tab_b, g_size_b(0,1));
+			}
+		}
+	}
+	if (chr_max(tab_a, g_size_a(0,1)) > (g_size_a(0,1) - 1)/2)
+	{
+		while (chr_max(tab_a, g_size_a(0,1)) != g_size_a(0,1)-1)
+			rra(tab_a, g_size_a(0,1));
+	}
+	else
+	{
+		while (chr_max(tab_a, g_size_a(0,1)) != g_size_a(0,1)-1)
+			ra(tab_a, g_size_a(0,1));
+	}
+	if (chr_max(tab_a, g_size_a(0,1)) > chr_max(tab_b, g_size_b(0,1)))
+		rra(tab_a, g_size_a(0,1));
+	if (chr_max(tab_b, g_size_b(0,1)) > (g_size_b(0,1) - 1)/2)
+	{
+		while (chr_max(tab_b, g_size_b(0,1)) != 0)
+			rra(tab_b, g_size_b(0,1));
+	}
+	else
+	{
+		while (chr_max(tab_b, g_size_b(0,1)) != 0)
+			ra(tab_b, g_size_b(0,1));
+	}
+	while (g_size_b(0,1) != 0)
+	{
+		while (tab_a[g_size_a(0,1) - 1] < tab_a[0] && tab_a[g_size_a(0,1) - 1] > tab_b[0])
+			rra(tab_a, g_size_a(0,1));
+		pa(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+		while (tab_a[g_size_a(0,1) - 1] < tab_a[0] && tab_a[g_size_a(0,1) - 1] > tab_b[0])
+			rra(tab_a, g_size_a(0,1));
 	}
 	return (1);
 }
