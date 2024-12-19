@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:04:50 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/19 11:47:16 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/19 12:51:18 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,5 @@ int	main(int argc, char **argv)
 		printf("%d ", tab_a[i]);
 		i++;
 	}
-	return (0);
+	return (free(tab_a), free(tab_b), 0);
 }
