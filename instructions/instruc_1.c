@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouv1.c                                            :+:      :+:    :+:   */
+/*   instruc_1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 13:00:13 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/14 13:00:13 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/19 09:40:01 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	pa(int *tab_a, int *tab_b, int size_a, int size_b)
 		i--;
 	}
 	tab_a[0] = tmp;
-	g_tmp(tab_b[0],0);
 	g_size_a(g_size_a(0,1) + 1, 0);
 	g_size_b(g_size_b(0,1) - 1, 0);
 	write(1, "pa\n", 3);
@@ -83,7 +82,6 @@ void	pb(int *tab_a, int *tab_b, int size_a, int size_b)
 		i--;
 	}
 	tab_b[0] = tmp;
-	g_tmp(tab_b[0],0);
 	g_size_a(g_size_a(0,1) - 1, 0);
 	g_size_b(g_size_b(0,1) + 1, 0);
 	write(1, "pb\n", 3);

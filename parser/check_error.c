@@ -6,11 +6,12 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:04:50 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/18 11:29:19 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:47:16 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include <stdio.h>
 
 int	ft_strcmp(char *s1, char *s2)
 {
@@ -126,5 +127,10 @@ int	main(int argc, char **argv)
 		return (free(tab_a), free(tab_b), 0);
 	init_tab(tab_a, tab_b, argv);
 	push_swap(tab_a, tab_b);
+	while (i < g_size_a(0,1))
+	{
+		printf("%d ", tab_a[i]);
+		i++;
+	}
 	return (0);
 }

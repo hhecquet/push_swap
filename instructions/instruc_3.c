@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:45:54 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/18 09:44:17 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:00:35 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,6 @@ int	g_size_b(int i, int read_only)
 		return(size_b);
 	size_b = i;
 	return (size_b);
-}
-int	g_tmp(int i, int read_only)
-{
-	static int	tmp = 2147483647;
-	if (read_only == 1)
-		return(tmp);
-	tmp = i;
-	return (tmp);
-}
-int	g_sign(int i, int read_only)
-{
-	static int	sign = 0;
-	if (read_only == 1)
-		return(sign);
-	sign = i;
-	return (sign);
 }
 
 int	g_min(int i, int read_only)
