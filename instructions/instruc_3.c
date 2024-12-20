@@ -14,8 +14,8 @@
 
 void	rrr(int *tab_a, int *tab_b, int size_a, int size_b)
 {
-	rra(tab_a, size_a);
-	rrb(tab_b, size_b);
+	rra(tab_a, size_a, 1);
+	rrb(tab_b, size_b, 1);
 	write(1, "rrr\n", 4);
 }
 

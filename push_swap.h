@@ -31,11 +31,11 @@ void	ss(int *tab_a, int *tab_b);
 void	pa(int *tab_a, int *tab_b, int size_a, int size_b);
 void	pb(int *tab_a, int *tab_b, int size_a, int size_b);
 //instruc_2.c
-void	ra(int *tab_a, int size_a);
-void	rb(int *tab_b, int size_b);
+void	ra(int *tab_a, int size_a, int rr);
+void	rb(int *tab_b, int size_b, int rr);
 void	rr(int *tab_a, int *tab_b, int size_a, int size_b);
-void	rra(int *tab_a, int size_a);
-void	rrb(int *tab_b, int size_b);
+void	rra(int *tab_a, int size_a, int rrr);
+void	rrb(int *tab_b, int size_b, int rrr);
 //instruc_3.c
 void	rrr(int *tab_a, int *tab_b, int size_a, int size_b);
 int		g_size_a(int i, int read_only);
