@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:35:21 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/20 14:17:29 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:22:39 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,22 @@ int	push_swap(int *tab_a, int *tab_b)
 			else
 			{
 				if (j < g_size_a(0,1)/2)
-					ra(tab_a, g_size_a(0,1));
+				{
+					while (j != 0)
+					{
+						ra(tab_a, g_size_a(0,1));
+						j--;
+					}
+				}
 				else
-					rra(tab_a, g_size_a(0,1));
+				{
+					j = g_size_a(0,1) - j;
+					while (j != 0)
+					{
+						rra(tab_a, g_size_a(0,1));
+						j--;
+					}
+				}
 			}
 		}
 	}
