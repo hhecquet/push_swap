@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:35:21 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/19 16:07:09 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:17:29 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,12 @@ int	ft_strchr(int *tab_a, int tabb0)
 int	push_swap(int *tab_a, int *tab_b)
 {
 	int	i;
+	int	j;
 	int *tab_sort;
 	int size_a;
 	
 	i = 0;
+	j = 0;
 	size_a = 0;
 	tab_sort = malloc(g_size_a(0,1) * sizeof(int));
 	if (!tab_sort)
@@ -88,20 +90,42 @@ int	push_swap(int *tab_a, int *tab_b)
 	//////////////cas particulier 1 2 et 3 voir 4 a 5 + " " segfault
 	ft_sort_int_tab(tab_sort, g_size_a(0,1));
 	size_a = g_size_a(0,1);
-	pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+	i = 5;
 	while (g_size_a(0,1) != 0)
 	{
-
-		
-		if (tab_a[0] <= tab_sort[size_a/3])
+		if (tab_a[0] < tab_sort[size_a/2] && tab_a[0] >= tab_sort[((8-i)*size_a)/8])
 		{
 			pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
 			rb(tab_b, g_size_b(0,1));
-		}	
-		else if (tab_a[0] <= tab_sort[size_a/3 * 2])
+		}
+		else if (tab_a[g_size_a(0,1)-1] < tab_sort[size_a/2] && tab_a[g_size_a(0,1)-1] >= tab_sort[((8-i)*size_a)/8])
+		{
+			rra(tab_a, g_size_a(0,1));
 			pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+			rb(tab_b, g_size_b(0,1));
+		}
+		else if (tab_a[0] >= tab_sort[size_a/2] && tab_a[0] <= tab_sort[(i*size_a)/8 -1])
+			pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+		else if (tab_a[g_size_a(0,1)-1] >= tab_sort[size_a/2] && tab_a[g_size_a(0,1)-1] <= tab_sort[(i*size_a)/8 -1])
+		{
+			rra(tab_a, g_size_a(0,1));
+			pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+		}
 		else
-			
+		{
+			j = 0;
+			while (j < g_size_a(0,1) && (tab_a[j] < tab_sort[((8-i)*size_a)/8] || tab_a[j] >= tab_sort[(i*size_a)/8]))
+				j++;
+			if (j == g_size_a(0,1))
+				i++;
+			else
+			{
+				if (j < g_size_a(0,1)/2)
+					ra(tab_a, g_size_a(0,1));
+				else
+					rra(tab_a, g_size_a(0,1));
+			}
+		}
 	}
 	pa(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
 	pa(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
@@ -184,7 +208,7 @@ int	push_swap(int *tab_a, int *tab_b)
 				else
 				{
 					while (chr_max(tab_b, g_size_b(0,1)) != 0)
-						rrb(tab_b, g_size_b(0,1));
+						rrb(tab_b, g_size_b(0,1));/////////?
 				}
 			}
 			else if (ft_strchr(tab_a, tab_b[0]) < g_size_a(0,1)/2)
@@ -194,7 +218,7 @@ int	push_swap(int *tab_a, int *tab_b)
 						ra(tab_a, g_size_a(0,1));
 				else
 					while (chr_max(tab_b, g_size_b(0,1)) != 0)
-						rrb(tab_b, g_size_b(0,1));
+						rrb(tab_b, g_size_b(0,1));///////////?
 			}
 		}//CHECK ORDER PLUS
 	}
@@ -210,3 +234,36 @@ int	push_swap(int *tab_a, int *tab_b)
 	}
 	return (free(tab_sort), 1);
 }
+/*
+	pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+	while (g_size_a(0,1) != 0)
+	{
+		if (tab_a[0] < tab_sort[size_a/2])
+		{
+			pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+			rb(tab_b, g_size_b(0,1));
+		}	
+		else
+			pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+	}
+	i = 3;
+	while (g_size_b(0,1) != 0)
+	{
+		if (tab_b[0] >= tab_sort[size_a/2] && tab_b[0] <= tab_sort[(i*size_a)/4 - 1])
+		{
+			pa(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+			ra(tab_a, g_size_a(0,1));
+		}
+		else if (tab_b[0] < tab_sort[size_a/2] && tab_b[0] >= tab_sort[((4-i)*size_a)/4])
+			pa(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+		else
+		{
+			j = 0;
+			while (j < g_size_b(0,1) && (tab_b[j] > tab_sort[(i*size_a)/4 -1] || tab_b[j] < tab_sort[((4-i)*size_a)/4]))
+				j++;
+			if (j == g_size_b(0,1))
+				i = 4;
+			else
+				rb(tab_b, g_size_b(0,1));
+		}
+	} */
