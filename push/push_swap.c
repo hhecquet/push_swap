@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:35:21 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/20 14:22:39 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/20 15:15:54 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,23 @@ int	ft_strchr(int *tab_a, int tabb0)
 	i = 1;
 	while (i < g_size_a(0,1))
 	{
-		if (tab_a[i] > tabb0 && tab_a[i - 1] < tabb0 && tab_a[i] > tab_a[j])
-			j = i;
-		i++;
+		if (tab_a[i] > tabb0 && tab_a[i - 1] < tabb0)
+		{
+			if (j != 0)
+			{
+				if (tab_a[i] < tab_a[j])
+					j = i;
+			}
+			else if (j == 0 && k == 0)
+			{
+				if (tab_a[i] < tab_a[k])
+					j = i;
+			}
+			else if (j == 0 && k == 1)
+				j = i;
+		}
+		else
+			i++;
 	}
 	if (j == 0 && k == 1)
 		return (chr_min(tab_a, g_size_a(0,1)));
@@ -143,14 +157,14 @@ int	push_swap(int *tab_a, int *tab_b)
 	pa(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
 	pa(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
 	if (tab_a[1] < tab_a[0] && !(tab_a[chr_max(tab_a, g_size_a(0,1))] > tab_b[chr_max(tab_b, g_size_b(0,1))] && chr_max(tab_a, g_size_a(0,1)) != 0))
-		sa(tab_a);
+		sa(tab_a);//////stop ici
 	while (g_size_b(0,1) != 0)
 	{
 		if (((ft_strchr(tab_a, tab_b[chr_max(tab_b,g_size_b(0,1))])) == 0 && chr_max(tab_b,g_size_b(0,1)) == 0)|| ft_strchr(tab_a, tab_b[0]) == 0)
 			pa(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
 		if (tab_a[g_size_a(0,1)-1] > tab_b[0] && tab_a[g_size_a(0,1)-1] < tab_a[0] && tab_a[g_size_a(0,1)-1] > tab_b[chr_max(tab_b, g_size_b(0,1))])//?
 			rra(tab_a, g_size_a(0,1));
-		else if (chr_max(tab_b, g_size_b(0,1)) < g_size_b(0,1)/2)
+		if (chr_max(tab_b, g_size_b(0,1)) < g_size_b(0,1)/2)
 		{
 			if (ft_strchr(tab_a, tab_b[0]) >= g_size_a(0,1)/2)
 			{
@@ -221,7 +235,7 @@ int	push_swap(int *tab_a, int *tab_b)
 				else
 				{
 					while (chr_max(tab_b, g_size_b(0,1)) != 0)
-						rrb(tab_b, g_size_b(0,1));/////////?
+						rrb(tab_b, g_size_b(0,1));
 				}
 			}
 			else if (ft_strchr(tab_a, tab_b[0]) < g_size_a(0,1)/2)
@@ -231,7 +245,7 @@ int	push_swap(int *tab_a, int *tab_b)
 						ra(tab_a, g_size_a(0,1));
 				else
 					while (chr_max(tab_b, g_size_b(0,1)) != 0)
-						rrb(tab_b, g_size_b(0,1));///////////?
+						rrb(tab_b, g_size_b(0,1));
 			}
 		}//CHECK ORDER PLUS
 	}
