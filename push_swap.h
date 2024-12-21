@@ -57,5 +57,6 @@ int		check_order_plus(int *tab_a, int *tab_b);
 int		push_swap(int *tab_a, int *tab_b);
 //sort_tab.c
 void	ft_sort_int_tab(int *tab_sort, int size);
+int     ft_compare_int_tab(int *tab_b);
 
 #endif
