@@ -289,3 +289,36 @@ int	push_swap(int *tab_a, int *tab_b)
 		}
 		return (1);
 	} */
+/*
+	pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+	while (g_size_a(0,1) != 0)
+	{
+		if (tab_a[0] < tab_sort[size_a/2])
+		{
+			pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+			rb(tab_b, g_size_b(0,1), 0);
+		}	
+		else
+			pb(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+	}
+	i = 3;
+	while (g_size_b(0,1) != 0)
+	{
+		if (tab_b[0] >= tab_sort[size_a/2] && tab_b[0] <= tab_sort[(i*size_a)/4 - 1])
+		{
+			pa(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+			ra(tab_a, g_size_a(0,1), 0);
+		}
+		else if (tab_b[0] < tab_sort[size_a/2] && tab_b[0] >= tab_sort[((4-i)*size_a)/4])
+			pa(tab_a, tab_b, g_size_a(0,1), g_size_b(0,1));
+		else
+		{
+			j = 0;
+			while (j < g_size_b(0,1) && (tab_b[j] > tab_sort[(i*size_a)/4 -1] || tab_b[j] < tab_sort[((4-i)*size_a)/4]))
+				j++;
+			if (j == g_size_b(0,1))
+				i = 4;
+			else
+				rb(tab_b, g_size_b(0,1), 0);
+		}
+	} */
