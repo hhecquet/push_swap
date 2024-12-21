@@ -37,26 +37,14 @@ void	ft_sort_int_tab(int *tab_sort, int size)
 	}
 }
 
-int ft_compare_int_tab(int *tab_b)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int i;
-	int *tab_cmp;
-
-	i = 0;
-	tab_cmp = malloc(g_size_b(0,1) * sizeof(int));
-	if (!tab_cmp)
-		return (0);
-	while (i < g_size_b(0,1))
+	while (*s1 || *s2)
 	{
-		tab_cmp[i] = tab_b[i];
-		i++;
-	}
-	ft_sort_int_tab(tab_cmp, g_size_b(0,1));
-	while (i < g_size_b(0,1) - 1)
-	{
-		if ((tab_cmp[i + 1] - tab_cmp[i]) > 50)
-			return (1);
-		i++;
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
 	}
 	return (0);
 }

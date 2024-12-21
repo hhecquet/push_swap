@@ -103,7 +103,7 @@ char	**ft_split(char const *s, char c)
 		free(tab);
 		return (NULL);
 	}
-	g_ac(ft_count_j(s, c) + 1,0);
+	g_ac(ft_count_j(s, c) + 1, 0);
 	tab = ft_set_string(s, c, tab, i);
 	return (tab);
 }

@@ -22,7 +22,7 @@ SRCS =	parser/check_error.c			\
 		push/sort_tab.c					\
 		instructions/instruc_1.c		\
 		instructions/instruc_2.c		\
-		instructions/instruc_3.c		
+		instructions/utils.c		
 
 OBJ = $(SRCS:.c=.o)
 

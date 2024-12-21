@@ -11,19 +11,6 @@
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdio.h>
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	while (*s1 || *s2)
-	{
-		if (*s1 != *s2)
-			return (*s1 - *s2);
-		s1++;
-		s2++;
-	}
-	return (0);
-}
 
 int	check_num(char c)
 {
@@ -90,7 +77,7 @@ void	init_tab(int *tab_a, int *tab_b, char **av)
 	int	i;
 
 	i = 0;
-	while (i < g_size_a(0,1))
+	while (i < s_a(0, 1))
 	{
 		tab_a[i] = ft_atoi(av[i + 1]);
 		tab_b[i] = 0;
@@ -98,39 +85,23 @@ void	init_tab(int *tab_a, int *tab_b, char **av)
 	}
 }
 
-int g_ac(int i, int read_only)
-{
-	static int ac;
-
-	if (read_only == 0)
-		ac = i;
-	return (ac);
-}
-
 int	main(int argc, char **argv)
 {
-	int 	*tab_a;
-	int 	*tab_b;
-	int 	i;
+	int		*tab_a;
+	int		*tab_b;
 
-	i = 0;
 	g_ac(argc, 0);
 	if (argc == 2)
 		argv = ft_split(argv[1], ' ');
-	g_size_a(g_ac(0,1) - 1, 0);
-	g_size_b(0, 0);
-	if (check_double(g_ac(0,1), argv) == 0)
+	s_a(g_ac(0, 1) - 1, 0);
+	s_b(0, 0);
+	if (check_double(g_ac(0, 1), argv) == 0)
 		return (write(1, "Error\n", 6), 0);
-	tab_a = malloc(sizeof(int *) * g_size_a(0,1));
-	tab_b = malloc(sizeof(int *) * g_size_a(0,1));
+	tab_a = malloc(sizeof(int *) * s_a(0, 1));
+	tab_b = malloc(sizeof(int *) * s_a(0, 1));
 	if (!tab_a || !tab_b)
 		return (free(tab_a), free(tab_b), 0);
 	init_tab(tab_a, tab_b, argv);
 	push_swap(tab_a, tab_b);
-	while (i < g_size_a(0,1))
-	{
-		printf("%d ", tab_a[i]);
-		i++;
-	}
 	return (free(tab_a), free(tab_b), 0);
 }

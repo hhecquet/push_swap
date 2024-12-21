@@ -12,54 +12,20 @@
 
 #include "../push_swap.h"
 
-void	ra(int *tab_a, int size_a, int rr)
+void	rr(int *tab_a, int *tab_b)
 {
-	int	i;
-	int	tmp;
-
-	i = 0;
-	tmp = tab_a[0];
-	while (i < size_a - 1)
-	{
-		tab_a[i] = tab_a[i + 1];
-		i++;
-	}
-	tab_a[size_a - 1] = tmp;
-	if (rr == 0)
-		write(1, "ra\n", 3);
-}
-
-void	rb(int *tab_b, int size_b, int rr)
-{
-	int	i;
-	int	tmp;
-
-	i = 0;
-	tmp = tab_b[0];
-	while (i < size_b - 1)
-	{
-		tab_b[i] = tab_b[i + 1];
-		i++;
-	}
-	tab_b[size_b - 1] = tmp;
-	if (rr == 0)
-		write(1, "rb\n", 3);
-}
-
-void	rr(int *tab_a, int *tab_b, int size_a, int size_b)
-{
-	ra(tab_a, size_a, 1);
-	rb(tab_b, size_b, 1);
+	ra(tab_a, 1);
+	rb(tab_b, 1);
 	write(1, "rr\n", 3);
 }
 
-void	rra(int *tab_a, int size_a, int rrr)
+void	rra(int *tab_a, int rrr)
 {
 	int	i;
 	int	tmp;
 
-	i = size_a - 2;
-	tmp = tab_a[size_a - 1];
+	i = s_a(0, 1) - 2;
+	tmp = tab_a[s_a(0, 1) - 1];
 	while (i >= 0)
 	{
 		tab_a[i + 1] = tab_a[i];
@@ -70,13 +36,13 @@ void	rra(int *tab_a, int size_a, int rrr)
 		write(1, "rra\n", 4);
 }
 
-void	rrb(int *tab_b, int size_b, int rrr)
+void	rrb(int *tab_b, int rrr)
 {
 	int	i;
 	int	tmp;
 
-	i = size_b - 2;
-	tmp = tab_b[size_b - 1];
+	i = s_b(0, 1) - 2;
+	tmp = tab_b[s_b(0, 1) - 1];
 	while (i >= 0)
 	{
 		tab_b[i + 1] = tab_b[i];
@@ -85,4 +51,11 @@ void	rrb(int *tab_b, int size_b, int rrr)
 	tab_b[0] = tmp;
 	if (rrr == 0)
 		write(1, "rrb\n", 4);
+}
+
+void	rrr(int *tab_a, int *tab_b)
+{
+	rra(tab_a, 1);
+	rrb(tab_b, 1);
+	write(1, "rrr\n", 4);
 }
