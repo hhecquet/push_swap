@@ -70,7 +70,6 @@ int	sort_left(int *a, int *b, int *tbs, int mx)
 	while (s_b(0, 1) != 0)
 	{
 		i = 0;
-		free(tbs);
 		tbs = malloc(s_b(0, 1) * sizeof(int));
 		if (!tbs)
 			return (0);
@@ -79,14 +78,16 @@ int	sort_left(int *a, int *b, int *tbs, int mx)
 			tbs[i] = b[i];
 			i++;
 		}
+		i = 0;
 		ft_sort_int_tab(tbs, s_b(0, 1));
-		while (i < s_b(0, 1) - 1 && tbs[i + 1] - tbs[i] < 50)
+		while (i < s_b(0, 1) - 1 && tbs[i + 1] - tbs[i] < 5)
 			i++;
-		if (i == s_b(0, 1) && tbs[i] - tbs[i - 1] < 50)
+		if (i == s_b(0, 1) - 1)
 			mx = 0;
 		else
 			mx = 1;
 		condi_total(a, b, mx);
+		free(tbs);
 	}
 	return (1);
 }
