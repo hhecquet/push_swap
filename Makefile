@@ -16,13 +16,17 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRCS =	parser/check_error.c			\
-		parser/ft_split.c				\
-		push/push_swap.c 				\
-		push/sort_tab.c					\
-		instructions/instruc_1.c		\
-		instructions/instruc_2.c		\
-		instructions/utils.c		
+SRCS =	check_error.c		\
+		condition_1.c		\
+		condition_2.c		\
+		ft_split.c			\
+		instruc_1.c			\
+		instruc_2.c			\
+		instruc_utils.c		\
+		push_swap_utils.c	\
+		push_swap.c			\
+		search_utils.c
+			
 
 OBJ = $(SRCS:.c=.o)
 

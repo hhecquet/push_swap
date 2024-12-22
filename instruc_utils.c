@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 int	s_a(int i, int read_only)
 {
@@ -66,4 +66,16 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	return (res * j);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	while (*s1 || *s2)
+	{
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
+	}
+	return (0);
 }

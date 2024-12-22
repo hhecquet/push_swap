@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 void	rr(int *tab_a, int *tab_b)
 {
@@ -58,4 +58,10 @@ void	rrr(int *tab_a, int *tab_b)
 	rra(tab_a, 1);
 	rrb(tab_b, 1);
 	write(1, "rrr\n", 4);
+}
+
+void	pb_rb(int *a, int *b)
+{
+	pb(a, b);
+	rb(b, 0);
 }

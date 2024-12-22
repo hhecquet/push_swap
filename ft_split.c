@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 static int	ft_count_j(char const *s, char c)
 {
@@ -77,7 +77,7 @@ static char	**ft_set_string(char const *s, char c, char **tab, int i)
 		debut = i;
 		while (s[i] != c && s[i])
 			i++;
-		if (j < ft_count_j(s, c))
+		if (j <= ft_count_j(s, c))
 		{
 			dest = (char *)malloc(sizeof(char) * ((i - 1) - debut + 1) + 1);
 			if (!dest)
@@ -88,7 +88,7 @@ static char	**ft_set_string(char const *s, char c, char **tab, int i)
 			tab[j++] = ft_strcpy(s, dest, debut, (i - 1));
 		}
 	}
-	return (tab[j] = NULL, tab);
+	return (tab);
 }
 
 char	**ft_split(char const *s, char c)
