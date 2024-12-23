@@ -53,7 +53,7 @@ int	chunk_size(int *tbs, int s, int *a, int i)
 
 int	check_order(int *a)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < s_a(0, 1) - 1)

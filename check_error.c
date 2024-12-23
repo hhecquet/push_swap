@@ -83,25 +83,34 @@ void	init_tab(int *tab_a, int *tab_b, char **av)
 		tab_b[i] = 0;
 		i++;
 	}
+	push_swap(tab_a, tab_b);
 }
 
 int	main(int argc, char **argv)
 {
 	int		*tab_a;
 	int		*tab_b;
+	char	**split_argv;
 
+	split_argv = NULL;
 	g_ac(argc, 0);
 	if (argc == 2)
-		argv = ft_split(argv[1], ' ');
+	{
+		split_argv = ft_split(argv[1], ' ');
+		if (!split_argv)
+			return (write(1, "Error\n", 6), 0);
+		argv = split_argv;
+	}
 	s_a(g_ac(0, 1) - 1, 0);
 	s_b(0, 0);
 	if (check_double(g_ac(0, 1), argv) == 0)
-		return (write(1, "Error\n", 6), 0);
-	tab_a = malloc(sizeof(int *) * s_a(0, 1));
-	tab_b = malloc(sizeof(int *) * s_a(0, 1));
+		return (write(1, "Error\n", 6), ft_free(split_argv, g_ac(0, 1)), 0);
+	tab_a = malloc(sizeof(int) * s_a(0, 1));
+	tab_b = malloc(sizeof(int) * s_a(0, 1));
 	if (!tab_a || !tab_b)
-		return (free(tab_a), free(tab_b), 0);
+		return (free(tab_a), free(tab_b), ft_free(split_argv, g_ac(0, 1)), 0);
 	init_tab(tab_a, tab_b, argv);
-	push_swap(tab_a, tab_b);
+	if (split_argv)
+		ft_free(split_argv, g_ac(0, 1));
 	return (free(tab_a), free(tab_b), 0);
 }

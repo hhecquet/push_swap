@@ -50,15 +50,18 @@ static char	*ft_strcpy(char const *s, char *dest, int debut, int fin)
 	return (dest);
 }
 
-static void	ft_free(char **tab, size_t i)
+void	ft_free(char **tab, int size)
 {
-	size_t	j;
+	int	i;
 
-	j = 0;
-	while (j < i)
+	if (!tab)
+		return ;
+	i = 0;
+	while (i < size)
 	{
-		free(tab[j]);
-		j++;
+		if (tab[i])
+			free(tab[i]);
+		i++;
 	}
 	free(tab);
 }
@@ -70,6 +73,7 @@ static char	**ft_set_string(char const *s, char c, char **tab, int i)
 	char	*dest;
 
 	j = 1;
+	tab[0] = NULL;
 	while (s[i] != '\0')
 	{
 		while (s[i] == c && s[i])

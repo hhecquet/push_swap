@@ -35,6 +35,7 @@ void	condi1_to_4(int *a, int *b, int mx);
 void	condi5_to_8(int *a, int *b, int mx);
 //ft_split.c
 char	**ft_split(char const *s, char c);
+void	ft_free(char **tab, int size);
 //instruc_1.c
 void	sa(int *tab_a);
 void	pa(int *tab_a, int *tab_b);
@@ -58,7 +59,7 @@ void	condi_total(int *a, int *b, int mx);
 int		chunk_size(int *tbs, int s, int *a, int i);
 int		check_order(int *a);
 //push_swap.c
-void    short_sort(int *a, int *b);
+int		sort_short(int *a, int *b);
 void	sort_right(int *tbs, int s, int *a, int *b);
 int		sort_left(int *a, int *b, int *tbs, int mx);
 void	final_sort(int *a);

@@ -15,7 +15,7 @@
 int	sort_short(int *a, int *b)
 {
 	if (s_a(0, 1) == 2)
-		return(sa(a), 1);
+		return (sa(a), 1);
 	while (s_a(0, 1) != 3)
 	{
 		if (min(a, s_a(0, 1)) == 0)
