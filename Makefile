@@ -6,7 +6,7 @@
 #    By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/14 14:36:03 by marvin            #+#    #+#              #
-#    Updated: 2024/12/18 13:16:28 by hhecquet         ###   ########.fr        #
+#    Updated: 2024/12/23 17:17:15 by hhecquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,20 @@ SRCS =	check_error.c		\
 		push_swap_utils.c	\
 		push_swap.c			\
 		search_utils.c
-			
+
+BONUS = checker_check_error.c		\
+		checker_instruc_1.c			\
+		checker_instruc_2.c			\
+		checker_instruc_3.c			\
+		instruc_utils.c				\
+		ft_split.c					\
+		checker.c		
 
 OBJ = $(SRCS:.c=.o)
 
-all: $(NAME)
+BONUS_OBJ = $(BONUS:.c=.o)
+
+all: $(NAME) bonus
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
@@ -39,11 +48,16 @@ $(NAME): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+bonus: $(BONUS_OBJ)
+	$(CC) $(CFLAGS) $(BONUS_OBJ) -o checker
+	@echo "checker has been compiled successfully ! 🌟"
+
 clean: 
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(BONUS_OBJ)
 	@echo "$(NAME)'s object files have been deleted ! 🔥"
 
 fclean: clean
+	rm -f checker
 	rm -f $(NAME)
 	@echo "$(NAME) itself has been deleted ! 💥"
 
