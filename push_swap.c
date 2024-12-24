@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:35:21 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/20 15:15:54 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/24 10:09:45 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ int	sort_short(int *a, int *b)
 		else
 			ra(a, 0);
 	}
-	sa(a);
-	if (a[2] < a[1] && a[0] < a[1])
+	if ((a[0] < a[2] && a[2] < a[1]) || (a[0] > a[1] && a[0] < a[2])
+		|| (a[0] > a[1] && a[1] > a[2]))
+		sa(a);
+	if (a[2] < a[0] && a[0] < a[1])
 		rra(a, 0);
-	else if (a[0] > a[1] && a[1] < a[2])
+	else if (a[2] > a[1] && a[2] < a[0])
 		ra(a, 0);
 	while (s_b(0, 1) != 0)
 		pa(a, b);

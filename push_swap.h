@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:35:51 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/18 15:17:23 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/24 10:11:02 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 int		check_num(char c);
 int		check_int(char *av);
 int		check_double(int ac, char **av);
-void	init_tab(int *tab_a, int *tab_b, char **av);
+void	init_tab(int *tab_a, int *tab_b, char **av, char **split_argv);
 //condition_1.c
 void	condi1(int *a, int *b, int mx);
 void	condi2(int *a, int *b, int mx);

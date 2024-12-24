@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:04:50 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/19 12:51:18 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/24 10:13:16 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	check_double(int ac, char **av)
 	return (1);
 }
 
-void	init_tab(int *tab_a, int *tab_b, char **av)
+void	init_tab(int *tab_a, int *tab_b, char **av, char **split_argv)
 {
 	int	i;
 
@@ -84,6 +84,8 @@ void	init_tab(int *tab_a, int *tab_b, char **av)
 		i++;
 	}
 	push_swap(tab_a, tab_b);
+	if (split_argv)
+		ft_free(split_argv, g_ac(0, 1));
 }
 
 int	main(int argc, char **argv)
@@ -93,7 +95,8 @@ int	main(int argc, char **argv)
 	char	**split_argv;
 
 	split_argv = NULL;
-	g_ac(argc, 0);
+	if (g_ac(argc, 0) == 1)
+		return (0);
 	if (argc == 2)
 	{
 		split_argv = ft_split(argv[1], ' ');
@@ -109,8 +112,6 @@ int	main(int argc, char **argv)
 	tab_b = malloc(sizeof(int) * s_a(0, 1));
 	if (!tab_a || !tab_b)
 		return (free(tab_a), free(tab_b), ft_free(split_argv, g_ac(0, 1)), 0);
-	init_tab(tab_a, tab_b, argv);
-	if (split_argv)
-		ft_free(split_argv, g_ac(0, 1));
+	init_tab(tab_a, tab_b, argv, split_argv);
 	return (free(tab_a), free(tab_b), 0);
 }

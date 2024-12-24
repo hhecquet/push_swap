@@ -1,0 +1,81 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_instruc_utils.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/14 14:45:54 by marvin            #+#    #+#             */
+/*   Updated: 2024/12/24 10:31:43 by hhecquet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "checker_push_swap.h"
+
+int	s_a(int i, int read_only)
+{
+	static int	size_a = 0;
+
+	if (read_only == 1)
+		return (size_a);
+	size_a = i;
+	return (size_a);
+}
+
+int	s_b(int i, int read_only)
+{
+	static int	size_b = 0;
+
+	if (read_only == 1)
+		return (size_b);
+	size_b = i;
+	return (size_b);
+}
+
+int	g_ac(int i, int read_only)
+{
+	static int	ac;
+
+	if (read_only == 0)
+		ac = i;
+	return (ac);
+}
+
+int	ft_atoi(const char *nptr)
+{
+	int	i;
+	int	j;
+	int	res;
+
+	res = 0;
+	i = 0;
+	j = 1;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+	{
+		i++;
+	}
+	if (nptr[i] == '+' || nptr[i] == '-')
+	{
+		if (nptr[i] == '-')
+			j *= -1;
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		res = res * 10 + nptr[i] - '0';
+		i++;
+	}
+	return (res * j);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	while (*s1 || *s2)
+	{
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
+	}
+	return (0);
+}

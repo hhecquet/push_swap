@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   checker_ft_split.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 15:04:57 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/24 09:13:28 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/24 10:31:37 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_push_swap.h"
 
 static int	ft_count_j(char const *s, char c)
 {

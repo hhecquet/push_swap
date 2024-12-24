@@ -6,7 +6,7 @@
 #    By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/14 14:36:03 by marvin            #+#    #+#              #
-#    Updated: 2024/12/23 17:17:15 by hhecquet         ###   ########.fr        #
+#    Updated: 2024/12/24 10:30:45 by hhecquet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,8 @@ BONUS = checker_check_error.c		\
 		checker_instruc_1.c			\
 		checker_instruc_2.c			\
 		checker_instruc_3.c			\
-		instruc_utils.c				\
-		ft_split.c					\
+		checker_instruc_utils.c		\
+		checker_ft_split.c			\
 		checker.c		
 
 OBJ = $(SRCS:.c=.o)
